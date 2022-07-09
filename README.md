@@ -1,16 +1,24 @@
 # naive-i18n README
 Add hover texts to your i18n words.
 
+![naive-i18n](./imgs/screenshot1.png)
+
+## Getting Started
+set the i18n text location (run `n18n: setup`, then reload)
+
+example i18n config file:
+```json
+{
+  "s20001": "hello",
+  "s20002": "我是蓝猫"
+}
+```
+
 ## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
 
 This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+* `n18n.location`: i18n JSON file location
 
 ## Known Issues
 

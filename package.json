@@ -1,7 +1,7 @@
 {
 	"name": "naive-i18n",
 	"displayName": "naive-i18n",
-	"description": "show the original text ",
+	"description": "add hover texts to your i18n words",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.69.0"
@@ -9,14 +9,36 @@
 	"categories": [
 		"Other"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gnosis23/vscode-naive-i18n"
+	},
 	"activationEvents": [
-		"*"
+		"onLanguage:javascript",
+		"onCommand:n18n.config"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"capabilities": {
 			"hoverProvider": "true"
-		}
+		},
+		"configuration": {
+			"type": "object",
+			"title": "n18n: Configuration File Location",
+			"properties": {
+				"n18n.location": {
+					"type": "string",
+					"default": "",
+					"description": "Storage location for i18n text."
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "n18n.config",
+				"title": "naive-i18n: setup config"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
