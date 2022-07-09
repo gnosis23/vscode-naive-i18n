@@ -39,17 +39,20 @@ class Config {
 
 	static readText() {
 		let configLocation = String(Config.getConfigLocation());
+		// ignore empty path
+		if (!configLocation) { return; }
+
 		// read files in location
 		fs.readFile(String(configLocation), (err, buf) => {
 			if (err) {
 				console.error(err);
-				return vscode.window.showErrorMessage('Failed to read the i18n JSON file, try to run `n18n: setup`');
+				// don't show warning
 			} else {
 				try {
 					const content = JSON.parse(buf.toString());
 					mockDict = content;
 				} catch (err) {
-					return vscode.window.showErrorMessage('Bad i18n JSON file.');
+					return vscode.window.showErrorMessage('Bad i18n JSON file, try to run `n18n: setup` again');
 				}
 			}
 		});
