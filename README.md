@@ -1,4 +1,9 @@
 # naive-i18n README
+
+[![Creative Commons](https://flat.badgen.net/badge/license/CC-BY-NC-4.0/orange)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![GitHub](https://flat.badgen.net/github/release/gnosis23/vscode-naive-i18n/)](https://github.com/gnosis23/vscode-naive-i18n/releases)
+[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/installs-short/BohaoWang.naive-i18n.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=BohaoWang.naive-i18n)
+
 Add hover texts to your i18n words.
 
 ![naive-i18n](./imgs/screenshot1.png)
