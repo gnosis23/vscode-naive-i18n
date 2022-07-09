@@ -2,7 +2,8 @@
 	"name": "naive-i18n",
 	"displayName": "naive-i18n",
 	"description": "add hover texts to your i18n words",
-	"version": "0.0.1",
+	"version": "0.9.0",
+	"publisher": "BohaoWang",
 	"engines": {
 		"vscode": "^1.69.0"
 	},
@@ -13,6 +14,7 @@
 		"type": "git",
 		"url": "https://github.com/gnosis23/vscode-naive-i18n"
 	},
+	"icon": "resources/icon.png",
 	"activationEvents": [
 		"onLanguage:javascript",
 		"onCommand:n18n.config"
