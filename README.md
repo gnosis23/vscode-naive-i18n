@@ -6,7 +6,7 @@
 
 Add hover texts to your i18n words.
 
-![naive-i18n](./imgs/screenshot1.png)
+![naive-i18n](./imgs/screenshot2.png)
 
 ## Getting Started
 set the i18n text location (run `n18n: setup`, then reload)
