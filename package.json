@@ -2,7 +2,7 @@
 	"name": "naive-i18n",
 	"displayName": "naive-i18n",
 	"description": "add hover texts to your i18n words",
-	"version": "0.9.1",
+	"version": "0.9.2",
 	"publisher": "BohaoWang",
 	"engines": {
 		"vscode": "^1.69.0"
@@ -17,7 +17,8 @@
 	"icon": "resources/icon.png",
 	"activationEvents": [
 		"onLanguage:javascript",
-		"onCommand:n18n.config"
+		"onCommand:n18n.setup",
+		"onCommand:n18n.reload"
 	],
 	"main": "./out/index.js",
 	"contributes": {
@@ -37,8 +38,12 @@
 		},
 		"commands": [
 			{
-				"command": "n18n.config",
-				"title": "naive-i18n: setup config"
+				"command": "n18n.setup",
+				"title": "naive-i18n: setup"
+			},
+			{
+				"command": "n18n.reload",
+				"title": "naive-i18n: reload"
 			}
 		]
 	},

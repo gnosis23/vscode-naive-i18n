@@ -18,7 +18,7 @@ export class ConfigLoader {
 			openLabel: 'Select'
 		};
 
-		vscode.window.showOpenDialog(openDialogOptions).then(fileUri => {
+		return vscode.window.showOpenDialog(openDialogOptions).then(fileUri => {
 			if (fileUri && fileUri[0]) {
 				let n18nConfiguration = vscode.workspace.getConfiguration('n18n');
 			 	n18nConfiguration.update('location', path.normalize(fileUri[0].fsPath), true).then(() => {
@@ -37,7 +37,7 @@ export class ConfigLoader {
 		});
 	}
 
-	static readText(data: CoreData) {
+	static reload(data: CoreData) {
 		let configLocation = String(ConfigLoader.getConfigLocation());
 		// ignore empty path
 		if (!configLocation) { return; }

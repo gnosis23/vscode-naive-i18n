@@ -10,13 +10,20 @@ export async function activate(context: vscode.ExtensionContext) {
 	log.appendLine('[info] naive-i18n is active.');
 
 	// register commands
-	let setupDisposable = vscode.commands.registerCommand('n18n.config', () => {
+	let setupDisposable = vscode.commands.registerCommand('n18n.setup', () => {
 		ConfigLoader.setup();
 	});
 	context.subscriptions.push(setupDisposable);
+
+	let reloadDisposable = vscode.commands.registerCommand('n18n.reload', () => {
+		ConfigLoader.reload(coreData)?.then(() => {
+			coreData.reload();
+		});
+	});
+	context.subscriptions.push(reloadDisposable);
 	
 	// init
-	await ConfigLoader.readText(coreData);
+	await ConfigLoader.reload(coreData);
 
 	await registerHover(context, coreData);
 }
