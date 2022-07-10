@@ -9,11 +9,26 @@ Add hover texts to your i18n words.
 ![naive-i18n](./imgs/screenshot2.png)
 
 ## Getting Started
-set the i18n text location (run `n18n: setup`, then reload)
+run `n18n: setup` command (`F1`) to set the file location of your i18n words.
 
-example i18n config file:
+## I18n words file Examples
+### JSON
+`JSON` format is recommended:
+
 ```json
 {
+  "s20001": "hello",
+  "s20002": "我是蓝猫"
+}
+```
+
+### JS (experimental)
+We also support js file which export a default object. 
+
+```js
+// some logic
+
+export default {
   "s20001": "hello",
   "s20002": "我是蓝猫"
 }
@@ -23,7 +38,7 @@ example i18n config file:
 
 This extension contributes the following settings:
 
-* `n18n.location`: i18n JSON file location
+* `n18n.location`: i18n file location
 
 ## Known Issues
 
