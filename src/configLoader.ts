@@ -15,7 +15,11 @@ export class ConfigLoader {
 			canSelectFiles: true,
 			canSelectFolders: false,
 			canSelectMany: false,
-			openLabel: 'Select'
+			openLabel: 'Select',
+			filters: {
+				"JSON": ['json'],
+				"JavaScript": ['js'],
+			}
 		};
 
 		return vscode.window.showOpenDialog(openDialogOptions).then(fileUri => {
@@ -53,7 +57,7 @@ export class ConfigLoader {
             const content = JSON.parse(buf.toString());
             data.setTexts(content);
           } catch (err) {
-            return vscode.window.showErrorMessage('Bad i18n JSON file, try to run `n18n: setup` again');
+            vscode.window.showErrorMessage('Bad i18n JSON file, try to run `n18n: setup` again');
           }
         }
         resolve(1);
