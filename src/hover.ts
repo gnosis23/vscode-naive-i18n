@@ -53,7 +53,15 @@ export async function registerHover(context: ExtensionContext, coreData: CoreDat
             range: new Range(doc.positionAt(match.index), doc.positionAt(match.index + match[0].length)),
             get hoverMessage() {
               return new MarkdownString(coreData.codeTexts[key]);
-            }
+            },
+            renderOptions: {
+              after: {
+                contentText: coreData.getWord(key),
+                backgroundColor: '#999',
+                color: '#fff',
+                margin: '0 2px',
+              }
+            },
           });
           match = regex.exec(code);
         }
