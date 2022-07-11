@@ -2,7 +2,7 @@
 	"name": "naive-i18n",
 	"displayName": "naive-i18n",
 	"description": "add hover texts to your i18n words",
-	"version": "0.9.4",
+	"version": "0.9.5",
 	"publisher": "BohaoWang",
 	"engines": {
 		"vscode": "^1.60.0"
@@ -67,5 +67,8 @@
 		"mocha": "^10.0.0",
 		"typescript": "^4.7.2",
 		"@vscode/test-electron": "^2.1.3"
+	},
+	"dependencies": {
+		"acorn": "^8.7.1"
 	}
 }
