@@ -7,25 +7,28 @@ import {
   DecorationOptions,
   Range,
 } from 'vscode';
+import { search } from './acAuto';
 import { CoreData } from './coreData';
 import { log } from './log';
+import { throttle } from './utils';
 
-export function throttle<T extends ((...args: any) => any)>(func: T, timeFrame: number): T {
-  let lastTime = 0;
-  let timer: any;
-  return function () {
-    const now = Date.now();
-    clearTimeout(timer);
-    if (now - lastTime >= timeFrame) {
-      lastTime = now;
-      return func();
-    }
-    else {
-      timer = setTimeout(func, timeFrame);
-    }
-  } as T;
+type RangeItem = {
+  start: number;
+  end: number;
+  text: string;
+};
+
+function extractRanges(code: string, coreData: CoreData): RangeItem[] {
+  const matches = search(code, coreData.acTree);
+  return matches.map(x => {
+    const str = x.str;
+    return {
+      start: x.index,
+      end: x.index + str.length,
+      text: coreData.getWord(str),
+    };
+  });
 }
-
 
 export async function registerHover(context: ExtensionContext, coreData: CoreData) {
   const underlineDecoration = window.createTextEditorDecorationType({
@@ -41,31 +44,22 @@ export async function registerHover(context: ExtensionContext, coreData: CoreDat
       const code = doc.getText();
       if (!code) { return reset(); }
 
-      const ranges: DecorationOptions[] = [];
-
-      // FIXME: overlap
-      Object.keys(coreData.codeTexts).forEach(key => {
-        // find all text literals, like "s20001"
-        let regex = RegExp(`('${key}'|"${key}")`, 'g');
-        let match = regex.exec(code);
-        while (match) {
-          ranges.push({
-            range: new Range(doc.positionAt(match.index), doc.positionAt(match.index + match[0].length)),
-            get hoverMessage() {
-              return new MarkdownString(coreData.codeTexts[key]);
-            },
-            renderOptions: {
-              after: {
-                contentText: coreData.getWord(key),
-                backgroundColor: '#999',
-                color: '#fff',
-                margin: '0 2px',
-              }
-            },
-          });
-          match = regex.exec(code);
-        }
-      });
+      const rangeItems = extractRanges(code, coreData);
+      // log.appendLine(JSON.stringify(rangeItems, null, 2));
+      const ranges: DecorationOptions[] = rangeItems.map(item => ({
+        range: new Range(doc.positionAt(item.start), doc.positionAt(item.end)),
+        get hoverMessage() {
+          return new MarkdownString(item.text);
+        },
+        renderOptions: {
+          // after: {
+          //   contentText: item.text,
+          //   backgroundColor: '#999',
+          //   color: '#fff',
+          //   margin: '0 2px',
+          // }
+        },
+      }));
 
       editor.setDecorations(underlineDecoration, ranges);
     } catch (err) {

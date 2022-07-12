@@ -2,7 +2,7 @@
 	"name": "naive-i18n",
 	"displayName": "naive-i18n",
 	"description": "add hover texts to your i18n words",
-	"version": "0.9.5",
+	"version": "0.9.6",
 	"publisher": "BohaoWang",
 	"engines": {
 		"vscode": "^1.60.0"
@@ -70,5 +70,11 @@
 	},
 	"dependencies": {
 		"acorn": "^8.7.1"
+	},
+	"__metadata": {
+		"id": "71ae8ec1-c4de-4797-9ce4-50f18657a8bf",
+		"publisherDisplayName": "BohaoWang",
+		"publisherId": "7834a816-f086-4688-a491-a746ea5e50a6",
+		"isPreReleaseVersion": false
 	}
 }

@@ -7,5 +7,7 @@ export default {
   's20002': "我是蓝猫",
   "s20003": "안녕하세요 세계",
   s20004: 'こんにちは世界',
-  s20005: "test hello \"world\""
+  s20005: "test hello \"world\"",
+
+  200001: '可爱'
 };
