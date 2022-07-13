@@ -35,6 +35,14 @@ suite('AcAuto Test Suite', () => {
     );
 	});
 
+  test('fail test 2', () => {
+    let root = buildACAutoTree(['s00s']);
+    assert.equal(
+      root.children['s'],
+      root.children['s'].children['0'].children['0'].children['s'].fail
+    );
+	});
+
   test('search test', () => {
     let root = buildACAutoTree(['say', 'her', 'she', 'shy']);
     assert.deepStrictEqual(
@@ -43,11 +51,19 @@ suite('AcAuto Test Suite', () => {
     );
 	});
 
-  test('search 2 test', () => {
+  test('search test 2', () => {
     let root = buildACAutoTree(["'s20001'", "'s20002'"]);
     assert.deepStrictEqual(
       search("if (a === i18n('s20001') || a === i18n('s20002')) {}", root),
       [{ index: 15, str: "'s20001'" }, { index: 39, str: "'s20002'" }]
     );
-	});  
+	});
+
+  test('search test 3', () => {
+    let root = buildACAutoTree(["'s20001'", "(s20001)"]);
+    assert.deepStrictEqual(
+      search("if (a === i18n('s20001') || a === i18n('s20002')) {}", root),
+      [{ index: 15, str: "'s20001'" }]
+    );
+	});
 });

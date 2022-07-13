@@ -2,7 +2,7 @@
 	"name": "naive-i18n",
 	"displayName": "naive-i18n",
 	"description": "add hover texts to your i18n words",
-	"version": "0.9.6",
+	"version": "0.9.7",
 	"publisher": "BohaoWang",
 	"engines": {
 		"vscode": "^1.60.0"

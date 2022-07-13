@@ -79,7 +79,7 @@ export function search(code: string, root: ACTreeNode): WordSearchResult[] {
         break;
       }
       temp = temp.fail as ACTreeNode;
-    } while (temp !== root);
+    } while (temp !== root || temp.children[ch]);
   }
 
   return result;

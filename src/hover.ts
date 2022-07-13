@@ -25,7 +25,7 @@ function extractRanges(code: string, coreData: CoreData): RangeItem[] {
     return {
       start: x.index,
       end: x.index + str.length,
-      text: coreData.getWord(str),
+      text: coreData.getWord(str.slice(1, str.length - 1)),
     };
   });
 }

@@ -14,7 +14,10 @@ export class CoreData {
 
   setTexts(words: Record<string, string>) {
     this.codeTexts = words;
-    let _words = Object.keys(words);
+    let _words = [
+      ...Object.keys(words).map(x => `(${x})`),
+      ...Object.keys(words).map(x => `'${x}'`),
+    ];
     this.acTree = this._buildACTree(_words);
   }
 
